@@ -2,28 +2,31 @@
 
 A Model Context Protocol server
 
-This is a TypeScript-based MCP server that implements a simple notes system. It demonstrates core MCP concepts by providing:
+A TypeScript-based MCP server demonstrating core concepts through a ​project management system. Key components:
 
-- Resources representing text notes with URIs and metadata
-- Tools for creating new notes
-- Prompts for generating summaries of notes
+​Resources: Query projects via URIs and hierarchical paths
+​Tools: Create and open projects programmatically
+
+
+>goal: Tell AI to open the project, and AI will call MCP Server to open the project and run it locally
 
 ## Features
 
 ### Resources
-- List and access notes via `note://` URIs
-- Each note has a title, content and metadata
+- List and access projects via `project://` URIs
+- Each project has a project name, path and metadata
 - Plain text mime type for simple content access
+![Alt text](./resources/list_resources.png)
 
 ### Tools
-- `create_note` - Create new text notes
+- `create_project` - Create new text projects
   - Takes title and content as required parameters
-  - Stores note in server state
+  - Stores project in server state
+- `open_project` - open project
 
-### Prompts
-- `summarize_notes` - Generate a summary of all stored notes
-  - Includes all note contents as embedded resources
-  - Returns structured prompt for LLM summarization
+![Alt text](./resources/open_project_1.png)
+![Alt text](./resources/open_project_2.png)
+
 
 ## Development
 
@@ -43,9 +46,11 @@ npm run watch
 ```
 
 inspector
-```
+```bash
 npx @modelcontextprotocol/inspector node .../demo-mcp-server/build/index.js
 ```
+
+
 
 ## Installation
 
@@ -56,11 +61,14 @@ On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
 
 ```json
 {
-  "mcpServers": {
-    "demo-mcp-server": {
-      "command": "/path/to/demo-mcp-server/build/index.js"
+    "demo-mcp-service": {
+      "command": "/usr/local/bin/node",
+      "args": [
+        ".../demo-mcp-server/build/index.js"
+      ],
+      "disabled": false,
+      "autoApprove": []
     }
-  }
 }
 ```
 
