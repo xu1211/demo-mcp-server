@@ -30,26 +30,31 @@ A TypeScript-based MCP server demonstrating core concepts through a ​project m
 
 ## Development
 
-Install dependencies:
+- Install dependencies:
 ```bash
 npm install
 ```
 
-Build the server:
+- Build the server:
 ```bash
 npm run build
 ```
 
-For development with auto-rebuild:
+- For development with auto-rebuild:
 ```bash
 npm run watch
 ```
 
-inspector
+
+- Debugging
+
+Since MCP servers communicate over stdio, debugging can be challenging. We recommend using the [MCP Inspector](https://github.com/modelcontextprotocol/inspector), which is available as a package script:
+
 ```bash
 npx @modelcontextprotocol/inspector node .../demo-mcp-server/build/index.js
 ```
 
+The Inspector will provide a URL to access debugging tools in your browser.
 
 
 ## Installation
@@ -72,12 +77,3 @@ On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
 }
 ```
 
-### Debugging
-
-Since MCP servers communicate over stdio, debugging can be challenging. We recommend using the [MCP Inspector](https://github.com/modelcontextprotocol/inspector), which is available as a package script:
-
-```bash
-npm run inspector
-```
-
-The Inspector will provide a URL to access debugging tools in your browser.
